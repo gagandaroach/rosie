@@ -1,0 +1,3 @@
+[submodule "dgx_researcher"]
+	path = dgx_researcher
+	url = git@github.com:gagandaroach/dgx_researcher
