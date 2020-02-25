@@ -7,23 +7,29 @@
 ##SBATCH --time=10-1:0
 # format: <days>-<hours>:<minutes>
 
-echo starting sbatch script: Template job
+SCRIPT_NAME="Template Job"
+MCW_RESEARCH=/data/mcw_research
+
+NETWORK_DIR=$MCW_RESEARCH/stylegan2
+DATASET_DIR=$MCW_RESEARCH/tiles/tfrecords
+TRAINING_DATASET=0.5x_cleaned
+
+SCRIPT_PATH=$NETWORK_DIR/run_training.py
+SCRIPT_ARGS="--num-gpus=8 --data-dir=$DATASET_DIR --config=config-f --dataset=$TRAINING_DATASET --mirror-augment=true --gamma=100"
+
+CONTAINER="/data/containers/msoe-tensorflow.sif"
+COMMAND="python $SCRIPT_PATH $SCRIPT_ARGS"
+
+## SCRIPT
+echo "starting sbatch script: ${SCRIPT_NAME}"
 date
 
-MCW_RESEARCH=/srv/data/mcw_research
-stylegan_dir=${MCW_RESEARCH}/stylegan2
-TRAINING_DATA=0.5x_cleaned
-DATA_DIR=$MCW_RESEARCH/tiles/tfrecords
-echo $TRAINING_DATA
+echo Training Dataset: "$TRAINING_DATASET"
+echo Using Container: "$CONTAINER"
+echo Executing Command: "${COMMAND}"
 
-# Path to container
-container="/data/containers/msoe-tensorflow.sif"
+srun singularity exec --nv -B /data:/data ${CONTAINER} /usr/local/bin/nvidia_entrypoint.sh "${COMMAND}"
 
-# Command to run inside container
-command="python /srv/data/mcw_research/stylegan2/run_training.py --num-gpus=8 --data-dir=$DATA_DIR --config=config-f --dataset=$TRAINING_DATA --mirror-augment=true --gamma=100"
-
-# Execute singularity container on node.
-srun singularity exec --nv -B /data:/data ${container} /usr/local/bin/nvidia_entrypoint.sh ${command}
-
-echo done we did it heck ya 
+echo "done we did it heck ya"
 date
+## END SCRIPT
