@@ -1,20 +1,21 @@
 #!/bin/bash
 
-#SBATCH --partition=batch
+#SBATCH --partition=dgx
 #SBATCH --nodes=1
-#SBATCH --gpus=1
-#SBATCH --cpus-per-gpu=4
-#SBATCH --time=10-0:0
-#note: time format: <days>-<hours>:<minutes>
+#SBATCH --gpus=8
+#SBATCH --cpus-per-gpu=8
+##SBATCH --time=10-1:0
+# format: <days>-<hours>:<minutes>
 
 SCRIPT_NAME="Template Job"
 MCW_RESEARCH=/data/mcw_research
 
-INPUT_DIR=$MCW_RESEARCH/from_disk_20200224
-OUTPUT_DIR=$MCW_RESEARCH/tiles/prostate_he_tiles_0.5x_2
+NETWORK_DIR=$MCW_RESEARCH/stylegan2
+DATASET_DIR=$MCW_RESEARCH/tiles/tfrecords
+TRAINING_DATASET=0.5x_cleaned
 
-SCRIPT_PATH=$MCW_RESEARCH/python_image_prep/pyvips_WSI_to_tile.py
-SCRIPT_ARGS="-i $INPUT_DIR -o $OUTPUT_DIR --count 10"
+SCRIPT_PATH=$NETWORK_DIR/run_training.py
+SCRIPT_ARGS="--num-gpus=8 --data-dir=$DATASET_DIR --config=config-f --dataset=$TRAINING_DATASET --mirror-augment=true --gamma=100"
 
 CONTAINER="/data/containers/msoe-tensorflow.sif"
 COMMAND="python $SCRIPT_PATH $SCRIPT_ARGS"
