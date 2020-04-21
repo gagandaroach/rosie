@@ -1,0 +1,7 @@
+Host microboss
+        HostName dh-mgmt1.hpc.msoe.edu
+        User microway
+
+Host dh-mgmt1
+        HostName dh-mgmt1.hpc.msoe.edu
+        User    daroachg
