@@ -14,6 +14,7 @@ To execute these scripts, use sbatch on the management nodes.
 
   * pyvips_tile_WSI.sh
     * Execute one command in a Singularity conatiner on a compute node.
+    * read file from /data partition, write to /data partition
   * parallel.pyvips_tile_WSI.sh
     * repeat that command for every file in a directory, parallel accross compute nodes. 
     * run command using srun on singularity container
