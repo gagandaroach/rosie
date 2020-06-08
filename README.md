@@ -76,6 +76,34 @@ SLURM executes user specifc commands in Singularity containers. These are specia
 
 See singularity [folder](/singularity) to see more commands on using and creating containers to experiment with custom libraries and data.
 
+**Definition File**
+
+The definition file allows you to create singularity images with custom libraries and code. In the below example, I install a python image processing library onto the base tensorflow container. This enables me to schedule image data cleaning jobs on the batch nodes.
+
+```
+Bootstrap: docker
+From: tensorflow:19.07-py3
+Registry: nvcr.io
+Namespace: nvidia
+# -----------------------------------------------------------------------------------
+
+%post
+# -----------------------------------------------------------------------------------
+# this will install all necessary packages and prepare the container
+
+    apt-get update && apt-get -y upgrade
+    apt-get -y install \
+        libvips-dev \
+        libvips-tools \
+        python3 \
+        python3-pip
+    python3 -m pip install --upgrade pip
+    python3 -m pip install --upgrade setuptools
+    python3 -m pip install pyvips
+```
+
+**Singularity Exec**
+
 You can ask slurm to run a singularity container process with the singularity exec command. The container will load, execute the command, then exit.
 
 #### Srun
