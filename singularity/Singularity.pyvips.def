@@ -1,0 +1,19 @@
+Bootstrap: docker
+From: tensorflow:19.07-py3
+Registry: nvcr.io
+Namespace: nvidia
+# -----------------------------------------------------------------------------------
+
+%post
+# -----------------------------------------------------------------------------------
+# this will install all necessary packages and prepare the container
+
+    apt-get update && apt-get -y upgrade
+    apt-get -y install \
+        libvips-dev \
+        libvips-tools \
+        python3 \
+        python3-pip
+    python3 -m pip install --upgrade pip
+    python3 -m pip install --upgrade setuptools
+    python3 -m pip install pyvips
