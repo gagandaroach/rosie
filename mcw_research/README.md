@@ -1,5 +1,7 @@
 # Example SLURM Singularity Scripts
 
+These are example scripts for performing work on the cluster.
+
 ## Executing scripts
 
 To execute these scripts, use sbatch on the management nodes. 
@@ -12,12 +14,12 @@ To execute these scripts, use sbatch on the management nodes.
 
 ## Descriptions
 
-  * pyvips_tile_WSI.sh
-    * Execute one command in a Singularity conatiner on a compute node.
-    * read file from /data partition, write to /data partition
-  * parallel.pyvips_tile_WSI.sh
-    * repeat that command for every file in a directory, parallel accross compute nodes. 
-    * run command using srun on singularity container
-  * train_stylegan.sh
-    * ask slurm to schedule training of stylegan network on dgx node, with 8 gpu
-    
+* pyvips_tile_WSI.sh
+  * Use SLURM to schedule a python script in a Singularity container
+  * read file from /data partition, write to /data partition
+* parallel.pyvips_tile_WSI.sh
+  * repeat that command for every file in a directory, parallel across compute nodes. 
+* train_stylegan.sh
+  * train large deep learning network
+  * use data from lab pool
+  * custom argument parameter pass through    
