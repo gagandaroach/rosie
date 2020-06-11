@@ -8,18 +8,23 @@
     - [Web Access](#web-access)
       - [Opening A Juypter Notebook Instance](#opening-a-juypter-notebook-instance)
     - [Shell Access](#shell-access)
-  - [Running Experiments](#running-experiments)
-    - [Resource Partitions](#resource-partitions)
-    - [Singularity](#singularity)
+  - [ROSIE Overview](#rosie-overview)
+    - [Compute Infrastructure](#compute-infrastructure)
+    - [Storage Pool](#storage-pool)
+  - [Singularity Virtual Environments](#singularity-virtual-environments)
+    - [Executing commands in Singularity Image](#executing-commands-in-singularity-image)
+    - [Interactive Singularity Shell](#interactive-singularity-shell)
+    - [Cluster Singularity Images](#cluster-singularity-images)
+    - [Building Singularity Image Policy](#building-singularity-image-policy)
       - [Definition File](#definition-file)
-      - [Singularity Exec](#singularity-exec)
-    - [SLURM](#slurm)
-      - [Srun](#srun)
-      - [Sbatch](#sbatch)
-  - [Good to know SLURM Commands](#good-to-know-slurm-commands)
-  - [Singularity Container Policy](#singularity-container-policy)
-  - [Essential Reading To Master Using ROSIE](#essential-reading-to-master-using-rosie)
-  - [**Need Help?**](#need-help)
+  - [Running Experiments with SLURM](#running-experiments-with-slurm)
+    - [Resource Partitions](#resource-partitions)
+    - [SLURM Run](#slurm-run)
+    - [SLURM Batch](#slurm-batch)
+      - [Example Sbatch Script](#example-sbatch-script)
+    - [Other SLURM Commands](#other-slurm-commands)
+  - [How To Master Using ROSIE](#how-to-master-using-rosie)
+  - [Need Help? Any comments or concerns? Email me.](#need-help-any-comments-or-concerns-email-me)
 
 ## Access Guide
 
@@ -58,24 +63,99 @@ Connect with ssh.
     $ ssh username@shell.rosie.msoe.edu
 ```
 
-## Designing Experiments with Singularity
+## ROSIE Overview
+
+### Compute Infrastructure
+
+ROSIE has 3 different types of computational processing nodes. There is a total of 27 compute nodes on the cluster.
+
+| Name | Node Count | Processor | CPU Count | RAM | GPU | IP Address |
+|----------|---------|-------|--------|-----|----|----|
+| Management | 4 | Intel Xeon Gold 6240 @ 2.601GHz | 72 | 187G | No GPU | 10.199.0.20[1-4] |
+| T4 | 20 | Intel Xeon Gold 6240 @ 2.60GHz | 72 | 376G | 4x Tesla T4 | 10.199.0.[1-20] |
+| DGX-1 | 3 | Intel Xeon CPU E5-2698 v4 @ 2.20GHz | 80 | 503G | 8x Tesla V100-SXM2 | 10.199.0.10[1-3] |
+
+### Storage Pool
+
+ROSIE has two high speed access 90TB storage nodes.
+
+1. The first pool stores the home folder for every cluster user.
+2. The second pool holds a resource pool for the `/data` pool. This contains datasets and code samples for faculty and students researching with the clusters compute resources.
+
+Both of these data pools are mounted to every node on the cluster.
+
+This means that from any machine on the cluster, you can access your home folder files and research data files.
+
+## Singularity Virtual Environments
+
+Like docker. Virtual containers to easily manage dependencies.
+
+Official Website: https://singularity.lbl.gov/
+
+User Guide: https://sylabs.io/guides/3.3/user-guide/index.html
+
+**Note:** ROSIE runs Singularity version 3.3
 
 Singularity is a platform that enables organized installation and management of custom libraries and code. Singularity creates virtual machiines that can be dispatched across nodes on the cluster, creating homogeneous virtual working environments. 
 
-Singularity virutal machines are saved as .sif files. A sif file can be instantiated to a running virtual machine. The user can enter this virtual machine, create a shell session, and execute command line arguments.
+Singularity’s command line interface allows you to interact with containers transparently. You can run programs inside a container as if they were running on your host system. You can easily redirect IO, use pipes, pass arguments, and access files, sockets, and ports on the host system from within a container.
 
-### Singularity Shell
+Singularity containers are saved as .sif files. A sif file can be instantiated to a running virtual machine. The user can enter this virtual machine, create a shell session, and execute command line arguments.
+
+### Executing commands in Singularity Image
+
+You can execute a command in a container. This will execute the command, then quit the container. This is useful for creating a job, as the sif can hold all required job files.
 
 ```bash
-    # cpu ubuntu workbox
-    $ singularity shell -B /data:/data /data/containers/ubuntu.sif
-    # --nv flags attached node gpus and tensorflow
-    $ singularity shell --nv -B /data:/data /data/containers/msoe-tensorflow.sif
+$ singularity exec -B /data:/data /data/containers/ubuntu_20.04.sif cat /etc/os-release
+```
+**Note:** Add cluster datapool to Container with -B bind flag.
+
+You can also add NVIDIA GPU to container command execution with --nv flag
+
+```bash
+$ singularity exec --nv /data/containers/msoe-tensorflow.sif cat /etc/os-release
 ```
 
-See singularity [folder](/singularity) to see more commands on using and creating containers to experiment with custom libraries and data.
+### Interactive Singularity Shell
 
-### Definition File
+You can enter an interactive shell with a singularity image. The `-b` flag will bind mount data into the container, with the pattern `host:conatiner`. The `-nv` flag will mount the gpus into the virtual machine.
+
+```bash
+# cpu ubuntu workbox
+$ singularity shell -B /data:/data /data/containers/ubuntu_20.04.sif
+```
+
+You can attach gpus to the interactive shell. 
+
+```bash
+# --nv flags attached node gpus and tensorflow
+$ singularity shell --nv -B /data:/data /data/containers/msoe-tensorflow.sif
+```
+
+If you combine the above command with SLURM, you can schedule a active shell session on a T4 compute node!
+
+### Cluster Singularity Images
+
+The cluster has the following singularity containers available for use:
+
+| Image Name          | Container Location in Cluster        |
+|---------------------|--------------------------------------|
+| ubuntu_18.04.sif    | /data/containers/ubuntu_18.04.sif    |
+| ubuntu_20.04.sif    | /data/containers/ubuntu_20.04.sif    |
+| msoe-tensorflow.sif | /data/containers/msoe-tensorflow.sif |
+
+### Building Singularity Image Policy
+
+See singularity [folder](/singularity) for example singularity definition files.
+
+To request a custom singularity image for batch execution, query your research mentor or faculty advisor with:
+
+  * Clear reason for needing custom container workspace.
+  * Singularity def file created and tested on local machine.
+  * Copy of Singularity file in cluster home directory.
+
+#### Definition File
 
 The definition file allows you to create singularity images with custom libraries and code. In the below example, I install a python image processing library onto a base docker tensorflow container. This enables me to schedule image data cleaning jobs on the batch nodes.
 
@@ -101,45 +181,27 @@ Namespace: nvidia
     python3 -m pip install pyvips
 ```
 
-### Singularity Exec
-
-You can ask slurm to run a singularity container process with the singularity exec command. The container will load, execute the command, then exit.
-
-### Cluster Singularity Images
-
-The cluster has the following singularity containers available for use:
-
-| Image Name          | Container Location in Cluster        |
-|---------------------|--------------------------------------|
-| ubuntu_18.04.sif    | /data/containers/ubuntu_18.04.sif    |
-| ubuntu_20.04.sif    | /data/containers/ubuntu_20.04.sif    |
-| msoe-tensorflow.sif | /data/containers/msoe-tensorflow.sif |
-
-### Building Singularity Image Policy
-
-See singularity [folder](/singularity) for examples on using singularity and example singularity definition files.
-
-To request a custom singularity image for batch execution, query your research mentor or faculty advisor with:
-
-  * Clear reason for needing custom container workspace.
-  * Singularity def file created and tested on local machine.
-  * Copy of Singularity file in cluster home directory.
-
 ## Running Experiments with SLURM
-
-The cluster uses SLURM and Singularity to manage experiments. 
 
 The Simple Linux Utlity for Resource Management or SLURM is a software that is installed on every machine in the cluster. SLURM will give cluster uses as many cpu and gpu resources as needed to complete a job. SLURM will organize all work into a queue, managing all of ROSIE's compute resources to maximize cluster utilization and minimize user wait time.
 
+It provides three key functions:
+
+  * allocating exclusive and/or non-exclusive access to resources (computer nodes) to users for some duration of time so they can perform work,
+  * providing a framework for starting, executing, and monitoring work (typically a parallel job such as MPI) on a set of allocated nodes, and
+  * arbitrating contention for resources by managing a queue of pending jobs.
+
+Slurm is the workload manager on about 60% of the TOP500 supercomputers.
+
 ### Resource Partitions
 
-The cluster has resources allocated to three partitions.
+The cluster is organized into 3 partitions, dividing resources into queues for efficient scheduling.
 
 1. batch
    * 20 teaching nodes with 4 T4
    * 3 dgx1 nodes
 2. teaching
-   * 20 teaching nodes
+   * 20 teaching T4 gpu nodes
 3. dgx
    * NVIDIA DGX1 NODES
 
@@ -149,55 +211,73 @@ Teaching partition is good for ninety percent of work.
 
 ### SLURM Run
 
-Slurm run or srun will ask slurm to schedule the execution of a command inside of a singularity container when the requested resources are available. 
+Slurm run or `srun` will ask slurm to schedule the execution of a command inside of a singularity container when the requested resources are available. 
 
 ```bash
-    # high performance batch processing node with two tesla T4 gpu
-    srun --partition=batch singularity exec -B /data:/data /data/containers/ubuntu.sif 
+# queue up a script in a ubuntu singularity container
+$ srun --partition=batch singularity exec -B /data:/data /data/containers/ubuntu_20.04.sif cat /etc/os-release
 
-    # high performance batch processing node with two tesla T4 gpu
-    srun --partition=batch --gpus=2 --cpus-per-gpu=8 singularity exec --nv -B /data:/data ${CONTAINER} python ${SCRIPT_PATH} ${SCRIPT_ARGS}
+# high performance batch processing node with two tesla T4 gpu
+$ srun --partition=batch --gpus=2 --cpus-per-gpu=8 singularity exec --nv -B /data:/data ${CONTAINER} python ${SCRIPT_PATH} ${SCRIPT_ARGS}
 
-    # research computing node with 8 tesla T100 gpu connected with nvlink
-    srun --partition=dgx --gpus=8 --cpus-per-gpu=8 singularity exec --nv -B /data:/data ${CONTAINER} python ${SCRIPT_PATH} ${SCRIPT_ARGS}
+# research computing node with 8 tesla T100 gpu connected with nvlink
+$ srun --partition=dgx --gpus=8 --cpus-per-gpu=8 singularity exec --nv -B /data:/data ${CONTAINER} python ${SCRIPT_PATH} ${SCRIPT_ARGS}
 ```
 
 The `--nv` flag auto mounts NVIDIA gpu resources to the singularity container. You can build singularity containers from any image on the Nvidia gpu cloud.
 
 ### SLURM Batch
 
-Sbatch is a wrapper around srun.
-
-After figuring out and crafting code in singularity containers, a SLURM sbatch script can help manage environment varialbes around many simlar srun commands. By using sbatch, slurm will automaticate grab any number of nodes, gpus, and link them together and start your process. There is a lot of flexiblity. The sbatch script allows the researcher save and keep track of adjustments to experiments. 
+Sbatch is a wrapper around srun. It allows researchers to organize their jobs with bash script fies.
 
 ```bash
-    $ sbatch example_batch_script.sh
+$ sbatch example_batch_script.sh
 ```
 
-See example sbatch scripts in slurm [folder](/slurm).
+#### Example Sbatch Script
+
+```sh
+#!/bin/bash
+
+#SBATCH --partition=teaching
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=2
+#SBATCH --job-name=CPU_JOB
+
+SCRIPT_NAME="MSOE CPU Processing Script - NO GPU"
+CONTAINER="/data/containers/msoe-tensorflow.sif"
+WORKSPACE=/data/mcw_research
+OUTPUT_DIR=$WORKSPACE/output
+INPUT_DIR=$WORKSPACE/input
+SCRIPT_PATH=$WORKSPACE/src/process_thing.py
+SCRIPT_ARGS="-i $INPUT_DIR -o $OUTPUT_DIR"
+
+## SCRIPT
+echo "SBATCH SCRIPT: ${SCRIPT_NAME}"
+srun singularity exec -B /data:/data ${CONTAINER} python3 ${SCRIPT_PATH} ${SCRIPT_ARGS}
+echo "END: " $SCRIPT_NAME
+```
+
+Addtional sbatch scripts in slurm [folder](/slurm).
 
 **Note:** The advantage of sbatch is the organization of resource requests for slurm run requests. In the sbatch scripts, you see see the slurm sbatch properties with `#SBATCH prop=val`. With srun, you can set the same properties on the exec. The man pages for `srun`,`sbatch` have excellent examples.
 
-## Good to know SLURM Commands
+### Other SLURM Commands 
 
 * `squeue`
   * What are people running on the cluster right now?
 * `squeue -s`
   * A little more detail.
-* `srun`
-  * Ask slurm to run a command on the cluster compute nodes. Auto allocate, execute job, then release resources.
-* `sbatch`
-  * Queue up a sbatch script. An sbatch script is a bash script that calls srun.
-* `scancel`
+* `scancel jobid`
+  * cancel a running job.
 
-## Essential Reading To Master Using ROSIE
+## How To Master Using ROSIE
 
 In your browser, these are excellent resources to getting started.
 
 * Bash scripting tutorial for beginners [linuxconfig.org](https://linuxconfig.org/bash-scripting-tutorial-for-beginners)
 * SLURM Documentation [link](https://slurm.schedmd.com/documentation.html)
 * Singularity Documentation [link](https://slurm.schedmd.com/documentation.html)
-
 
 On any node on the cluster, execute these commands to read detailed information about the commands.
 
@@ -212,6 +292,7 @@ Slurm jobs scheduled by daroachg for mcw_research Medical Imaging are in mcw_res
   * StyleGAN deploy on dgx node
   * Batched parallel data cleaning 
 
-## Need Help?
+## Need Help? Any comments or concerns? Email me.
 
 email me: EECS SysAdmin Gagan Daroach <daroachgb@msoe.edu>
+ 
