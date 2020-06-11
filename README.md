@@ -23,15 +23,17 @@
 
 ## Access Guide
 
-Getting started with performing scientific experiments on the compute cluster.
+How to connect to the cluster.
 
 ### Web Access
 
-Users can use the web interface to interact with the computer cluster and accelerate their experiments.
+Users can use their web browser to interact with the computer cluster and schedule jobs.
 
 [ROSIE Web Portal link](http://ood.rosie.msoe.edu)
 
-**Note:** This requires a user account on the compute cluster. Addtionally, the cluster is only accessible within the MSOE campus network. To connect to network on linux, see convenience script in [utils](/utils) folder. On windows visit sslvpn.msoe.edu to install the vpn client.
+**Note:** This requires a user account on the compute cluster. 
+
+**VPN Note:** The cluster is only accessible within the MSOE campus network. If you are off campus, you must connect to the MSOE virtual private network. To connect to the vpn on linux, see convenience script in [utils](/utils) folder. On windows, visit sslvpn.msoe.edu to install the vpn client.
 
 On the web portal you can
 
@@ -42,7 +44,7 @@ On the web portal you can
 
 #### Opening A Juypter Notebook Instance
 
-Log into the [ROSIE Web Portal](http://ood.rosie.msoe.edu) with your ROSIE username and password. Click on the Interactive Apps dropdown menu in the toolbar. From here, you can launch a jupyter notebook container for as long as needed.
+Log into the [ROSIE Web Portal](http://ood.rosie.msoe.edu) with your ROSIE username and password. Click on the Interactive Apps dropdown menu in the toolbar. From here you can launch a jupyter notebook web server for some amount of user specified time.
 
 **Note:** The shell access button will launch a terminal right in your browser. You can view and manage files on the node during the allocated time. 
 
@@ -56,42 +58,26 @@ Connect with ssh.
     $ ssh username@shell.rosie.msoe.edu
 ```
 
-## Running Experiments
+## Designing Experiments with Singularity
 
-The cluster uses SLURM and Singularity to manage experiments. 
+Singularity is a platform that enables organized installation and management of custom libraries and code. Singularity creates virtual machiines that can be dispatched across nodes on the cluster, creating homogeneous virtual working environments. 
 
-The Simple Linux Utlity for Resource Management or SLURM is a software that is installed on every machine in the cluster. SLURM will organize and dispatch researcher work requests, managing the available resource pool to give as much cpu and gpu power is imagineabile.
+Singularity virutal machines are saved as .sif files. A sif file can be instantiated to a running virtual machine. The user can enter this virtual machine, create a shell session, and execute command line arguments.
 
-### Resource Partitions
-
-The cluster has resources allocated to three partitions.
-
-1. batch
-   * 20 teaching nodes with 4 T4
-   * 3 dgx1 nodes
-2. teaching
-   * 20 teaching nodes
-3. dgx
-   * NVIDIA DGX1 NODES
-
-Teaching partition is good for ninety percent of work.
-
-### Singularity
-
-SLURM executes user specifc commands in Singularity containers. These are special containers that allow for the organized installation and management of custom libraries. A singularity container fucntions like a docker container, except the user account and permission are matched in the container.
+### Singularity Shell
 
 ```bash
     # cpu ubuntu workbox
     $ singularity shell -B /data:/data /data/containers/ubuntu.sif
-    # gpu and tensorflow
+    # --nv flags attached node gpus and tensorflow
     $ singularity shell --nv -B /data:/data /data/containers/msoe-tensorflow.sif
 ```
 
 See singularity [folder](/singularity) to see more commands on using and creating containers to experiment with custom libraries and data.
 
-#### Definition File
+### Definition File
 
-The definition file allows you to create singularity images with custom libraries and code. In the below example, I install a python image processing library onto the base tensorflow container. This enables me to schedule image data cleaning jobs on the batch nodes.
+The definition file allows you to create singularity images with custom libraries and code. In the below example, I install a python image processing library onto a base docker tensorflow container. This enables me to schedule image data cleaning jobs on the batch nodes.
 
 ```
 Bootstrap: docker
@@ -115,13 +101,53 @@ Namespace: nvidia
     python3 -m pip install pyvips
 ```
 
-#### Singularity Exec
+### Singularity Exec
 
 You can ask slurm to run a singularity container process with the singularity exec command. The container will load, execute the command, then exit.
 
-### SLURM
+### Cluster Singularity Images
 
-#### Srun
+The cluster has the following singularity containers available for use:
+
+| Image Name          | Container Location in Cluster        |
+|---------------------|--------------------------------------|
+| ubuntu_18.04.sif    | /data/containers/ubuntu_18.04.sif    |
+| ubuntu_20.04.sif    | /data/containers/ubuntu_20.04.sif    |
+| msoe-tensorflow.sif | /data/containers/msoe-tensorflow.sif |
+
+### Building Singularity Image Policy
+
+See singularity [folder](/singularity) for examples on using singularity and example singularity definition files.
+
+To request a custom singularity image for batch execution, query your research mentor or faculty advisor with:
+
+  * Clear reason for needing custom container workspace.
+  * Singularity def file created and tested on local machine.
+  * Copy of Singularity file in cluster home directory.
+
+## Running Experiments with SLURM
+
+The cluster uses SLURM and Singularity to manage experiments. 
+
+The Simple Linux Utlity for Resource Management or SLURM is a software that is installed on every machine in the cluster. SLURM will give cluster uses as many cpu and gpu resources as needed to complete a job. SLURM will organize all work into a queue, managing all of ROSIE's compute resources to maximize cluster utilization and minimize user wait time.
+
+### Resource Partitions
+
+The cluster has resources allocated to three partitions.
+
+1. batch
+   * 20 teaching nodes with 4 T4
+   * 3 dgx1 nodes
+2. teaching
+   * 20 teaching nodes
+3. dgx
+   * NVIDIA DGX1 NODES
+
+Teaching partition is good for ninety percent of work.
+
+**Note:** Partitions will change by end of Summer 2020.
+
+### SLURM Run
 
 Slurm run or srun will ask slurm to schedule the execution of a command inside of a singularity container when the requested resources are available. 
 
@@ -138,7 +164,7 @@ Slurm run or srun will ask slurm to schedule the execution of a command inside o
 
 The `--nv` flag auto mounts NVIDIA gpu resources to the singularity container. You can build singularity containers from any image on the Nvidia gpu cloud.
 
-#### Sbatch
+### SLURM Batch
 
 Sbatch is a wrapper around srun.
 
@@ -148,7 +174,7 @@ After figuring out and crafting code in singularity containers, a SLURM sbatch s
     $ sbatch example_batch_script.sh
 ```
 
-See example sbatch scripts in sbatch [folder](/sbatch).
+See example sbatch scripts in slurm [folder](/slurm).
 
 **Note:** The advantage of sbatch is the organization of resource requests for slurm run requests. In the sbatch scripts, you see see the slurm sbatch properties with `#SBATCH prop=val`. With srun, you can set the same properties on the exec. The man pages for `srun`,`sbatch` have excellent examples.
 
@@ -163,17 +189,6 @@ See example sbatch scripts in sbatch [folder](/sbatch).
 * `sbatch`
   * Queue up a sbatch script. An sbatch script is a bash script that calls srun.
 * `scancel`
-
-## Singularity Container Policy
-
-See singularity [folder](/singularity) for examples on using singularity.
-
-The cluster has a base tensorflow python image in `/data/containers/msoe-tensorflow.sif`. 
-
-To request a custom singularity image for batch execution, query your research mentor or faculty advisor with:
-
-  * Clear reason for needing custom container workspace.
-  * Tested buildable Singularity Definition file on cluster.
 
 ## Essential Reading To Master Using ROSIE
 
