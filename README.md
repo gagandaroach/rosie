@@ -2,24 +2,24 @@
 
 ![ROSIE Supercomputer](/ROSIE.jpg)
 
-## Table of Contents
-
+- [Milwaukee School of Engineering Academic High Performance Compute Cluster User Guide](#milwaukee-school-of-engineering-academic-high-performance-compute-cluster-user-guide)
   - [Access Guide](#access-guide)
     - [Web Access](#web-access)
       - [Opening A Juypter Notebook Instance](#opening-a-juypter-notebook-instance)
     - [Shell Access](#shell-access)
-  - [ROSIE Overview](#rosie-overview)
-    - [Compute Infrastructure](#compute-infrastructure)
-    - [Storage Pool](#storage-pool)
+  - [Compute Infrastructure](#compute-infrastructure)
+  - [Storage Pools](#storage-pools)
   - [Singularity Virtual Environments](#singularity-virtual-environments)
     - [Executing commands in Singularity Image](#executing-commands-in-singularity-image)
     - [Interactive Singularity Shell](#interactive-singularity-shell)
-    - [Cluster Singularity Images](#cluster-singularity-images)
-    - [Building Singularity Image Policy](#building-singularity-image-policy)
+    - [ROSIE Available Singularity Images](#rosie-available-singularity-images)
+    - [Building Singularity Images](#building-singularity-images)
       - [Definition File](#definition-file)
   - [Running Experiments with SLURM](#running-experiments-with-slurm)
     - [Resource Partitions](#resource-partitions)
     - [SLURM Run](#slurm-run)
+      - [Running barebones scripts in user-space](#running-barebones-scripts-in-user-space)
+      - [Running Singularity Images (recommended)](#running-singularity-images-recommended)
     - [SLURM Batch](#slurm-batch)
       - [Example Sbatch Script](#example-sbatch-script)
     - [Other SLURM Commands](#other-slurm-commands)
@@ -63,9 +63,7 @@ Connect with ssh.
     $ ssh username@shell.rosie.msoe.edu
 ```
 
-## ROSIE Overview
-
-### Compute Infrastructure
+## Compute Infrastructure
 
 ROSIE has 3 different types of computational processing nodes. There is a total of 27 compute nodes on the cluster.
 
@@ -75,12 +73,12 @@ ROSIE has 3 different types of computational processing nodes. There is a total 
 | T4 | 20 | Intel Xeon Gold 6240 @ 2.60GHz | 72 | 376G | 4x Tesla T4 | 10.199.0.[1-20] |
 | DGX-1 | 3 | Intel Xeon CPU E5-2698 v4 @ 2.20GHz | 80 | 503G | 8x Tesla V100-SXM2 | 10.199.0.10[1-3] |
 
-### Storage Pool
+## Storage Pools
 
 ROSIE has two high speed access 90TB storage nodes.
 
-1. The first pool stores the home folder for every cluster user.
-2. The second pool holds a resource pool for the `/data` pool. This contains datasets and code samples for faculty and students researching with the clusters compute resources.
+1. The first storage device stores the home folder for every cluster user.
+2. The second storage devices holds the `/data` resource share. This contains datasets and code samples for faculty and students researching with the clusters compute resources.
 
 Both of these data pools are mounted to every node on the cluster.
 
@@ -135,7 +133,7 @@ $ singularity shell --nv -B /data:/data /data/containers/msoe-tensorflow.sif
 
 If you combine the above command with SLURM, you can schedule a active shell session on a T4 compute node!
 
-### Cluster Singularity Images
+### ROSIE Available Singularity Images
 
 The cluster has the following singularity containers available for use:
 
@@ -145,7 +143,15 @@ The cluster has the following singularity containers available for use:
 | ubuntu_20.04.sif    | /data/containers/ubuntu_20.04.sif    |
 | msoe-tensorflow.sif | /data/containers/msoe-tensorflow.sif |
 
-### Building Singularity Image Policy
+### Building Singularity Images
+
+Users can create their own singulairyt images from the popular docker images on the DockerHub or NVIDIA GPU Cloud. To create a singularity image from a docker container:
+
+```bash
+$ singularity build Singularity.ubuntu.sif docker://ubuntu:latest
+```
+
+This will create a singularity image `Singularity.ubuntu.sif` of the latest tag docker ubuntu container.
 
 See singularity [folder](/singularity) for example singularity definition files.
 
@@ -211,11 +217,27 @@ Teaching partition is good for ninety percent of work.
 
 ### SLURM Run
 
+#### Running barebones scripts in user-space
+
+You can queue up any script in your home folder to execute on the network. 
+
+```bash
+$ srun --partition=teaching uname -a 
+```
+
+The partition flag specifies what resouce set to use in the cluster. You can specify certain names, gpu configs, or even node counts with the srun command. 
+
+```bash
+$ srun --partition=teaching --nodes=3 --cpus-per-task=10 python multi_node_command.py
+```
+
+#### Running Singularity Images (recommended)
+
 Slurm run or `srun` will ask slurm to schedule the execution of a command inside of a singularity container when the requested resources are available. 
 
 ```bash
 # queue up a script in a ubuntu singularity container
-$ srun --partition=batch singularity exec -B /data:/data /data/containers/ubuntu_20.04.sif cat /etc/os-release
+$ srun --partition=teaching singularity exec -B /data:/data /data/containers/ubuntu_20.04.sif cat /etc/os-release
 
 # high performance batch processing node with two tesla T4 gpu
 $ srun --partition=batch --gpus=2 --cpus-per-gpu=8 singularity exec --nv -B /data:/data ${CONTAINER} python ${SCRIPT_PATH} ${SCRIPT_ARGS}
@@ -275,7 +297,6 @@ Addtional sbatch scripts in slurm [folder](/slurm).
 
 In your browser, these are excellent resources to getting started.
 
-* Bash scripting tutorial for beginners [linuxconfig.org](https://linuxconfig.org/bash-scripting-tutorial-for-beginners)
 * SLURM Documentation [link](https://slurm.schedmd.com/documentation.html)
 * Singularity Documentation [link](https://slurm.schedmd.com/documentation.html)
 
