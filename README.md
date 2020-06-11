@@ -197,6 +197,6 @@ Slurm jobs scheduled by daroachg for mcw_research Medical Imaging are in mcw_res
   * StyleGAN deploy on dgx node
   * Batched parallel data cleaning 
 
-## **Need Help?**
+## Need Help?
 
 email me: EECS SysAdmin Gagan Daroach <daroachgb@msoe.edu>
