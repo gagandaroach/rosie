@@ -1,15 +1,27 @@
-```
-  ███    ███ ███████  ██████  ███████     ██████   ██████  ███████ ██ ███████ 
-  ████  ████ ██      ██    ██ ██          ██   ██ ██    ██ ██      ██ ██      
-  ██ ████ ██ ███████ ██    ██ █████       ██████  ██    ██ ███████ ██ █████ 
-  ██  ██  ██      ██ ██    ██ ██          ██   ██ ██    ██      ██ ██ ██    
-  ██      ██ ███████  ██████  ███████     ██   ██  ██████  ███████ ██ ███████
-```
-**Milwaukee School  of Engineering Academic High Performance Computing Cluster**
+# Milwaukee School of Engineering Academic High Performance Compute Cluster User Guide
 
 ![ROSIE Supercomputer](/ROSIE.jpg)
 
-## Users Getting Started Guide
+## Table of Contents
+
+  - [Access Guide](#access-guide)
+    - [Web Access](#web-access)
+      - [Opening A Juypter Notebook Instance](#opening-a-juypter-notebook-instance)
+    - [Shell Access](#shell-access)
+  - [Running Experiments](#running-experiments)
+    - [Resource Partitions](#resource-partitions)
+    - [Singularity](#singularity)
+      - [Definition File](#definition-file)
+      - [Singularity Exec](#singularity-exec)
+    - [SLURM](#slurm)
+      - [Srun](#srun)
+      - [Sbatch](#sbatch)
+  - [Good to know SLURM Commands](#good-to-know-slurm-commands)
+  - [Singularity Container Policy](#singularity-container-policy)
+  - [Essential Reading To Master Using ROSIE](#essential-reading-to-master-using-rosie)
+  - [**Need Help?**](#need-help)
+
+## Access Guide
 
 Getting started with performing scientific experiments on the compute cluster.
 
@@ -43,13 +55,14 @@ Connect with ssh.
 ```
     $ ssh username@shell.rosie.msoe.edu
 ```
-### Running Experiments
+
+## Running Experiments
 
 The cluster uses SLURM and Singularity to manage experiments. 
 
 The Simple Linux Utlity for Resource Management or SLURM is a software that is installed on every machine in the cluster. SLURM will organize and dispatch researcher work requests, managing the available resource pool to give as much cpu and gpu power is imagineabile.
 
-#### Partitions
+### Resource Partitions
 
 The cluster has resources allocated to three partitions.
 
@@ -61,9 +74,9 @@ The cluster has resources allocated to three partitions.
 3. dgx
    * NVIDIA DGX1 NODES
 
-Batch partition is good for ninety percent of work.
+Teaching partition is good for ninety percent of work.
 
-#### Singularity
+### Singularity
 
 SLURM executes user specifc commands in Singularity containers. These are special containers that allow for the organized installation and management of custom libraries. A singularity container fucntions like a docker container, except the user account and permission are matched in the container.
 
@@ -76,7 +89,7 @@ SLURM executes user specifc commands in Singularity containers. These are specia
 
 See singularity [folder](/singularity) to see more commands on using and creating containers to experiment with custom libraries and data.
 
-**Definition File**
+#### Definition File
 
 The definition file allows you to create singularity images with custom libraries and code. In the below example, I install a python image processing library onto the base tensorflow container. This enables me to schedule image data cleaning jobs on the batch nodes.
 
@@ -102,9 +115,11 @@ Namespace: nvidia
     python3 -m pip install pyvips
 ```
 
-**Singularity Exec**
+#### Singularity Exec
 
 You can ask slurm to run a singularity container process with the singularity exec command. The container will load, execute the command, then exit.
+
+### SLURM
 
 #### Srun
 
@@ -137,7 +152,7 @@ See example sbatch scripts in sbatch [folder](/sbatch).
 
 **Note:** The advantage of sbatch is the organization of resource requests for slurm run requests. In the sbatch scripts, you see see the slurm sbatch properties with `#SBATCH prop=val`. With srun, you can set the same properties on the exec. The man pages for `srun`,`sbatch` have excellent examples.
 
-### Good to know SLURM Commands
+## Good to know SLURM Commands
 
 * `squeue`
   * What are people running on the cluster right now?
@@ -149,7 +164,7 @@ See example sbatch scripts in sbatch [folder](/sbatch).
   * Queue up a sbatch script. An sbatch script is a bash script that calls srun.
 * `scancel`
 
-### Singularity Container Policy
+## Singularity Container Policy
 
 See singularity [folder](/singularity) for examples on using singularity.
 
@@ -182,6 +197,6 @@ Slurm jobs scheduled by daroachg for mcw_research Medical Imaging are in mcw_res
   * StyleGAN deploy on dgx node
   * Batched parallel data cleaning 
 
-# **Need Help?**
+## **Need Help?**
 
 email me: EECS SysAdmin Gagan Daroach <daroachgb@msoe.edu>
