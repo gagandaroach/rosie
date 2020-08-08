@@ -3,10 +3,11 @@
 ![ROSIE Supercomputer](/ROSIE.jpg)
 
 - [Milwaukee School of Engineering Academic High Performance Compute Cluster User Guide](#milwaukee-school-of-engineering-academic-high-performance-compute-cluster-user-guide)
+  - [Activating your User Account](#activating-your-user-account)
   - [Access Guide](#access-guide)
+    - [Shell Access](#shell-access)
     - [Web Access](#web-access)
       - [Opening A Juypter Notebook Instance](#opening-a-juypter-notebook-instance)
-    - [Shell Access](#shell-access)
   - [Compute Infrastructure](#compute-infrastructure)
   - [Storage Pools](#storage-pools)
   - [Singularity Virtual Environments](#singularity-virtual-environments)
@@ -26,17 +27,33 @@
   - [How To Master Using ROSIE](#how-to-master-using-rosie)
   - [Need Help? Any comments or concerns? Email me.](#need-help-any-comments-or-concerns-email-me)
 
+## Activating your User Account
+
+The campus cluster uses its own account managemnt system. To request an account, contact the EECS department or the ROSIE SysAdmin.
+
+You will be given a username and temporary password. You must log in via shell to reset this temporary password before you can use the web portal.
+
 ## Access Guide
 
 How to connect to the cluster.
+
+### Shell Access
+
+Users can directly connect to the management nodes and and open a command line interface.
+
+Connect with **ssh**.
+
+```
+    $ ssh username@shell.rosie.msoe.edu
+```
+
+Windows command prompt and powershell do not include ssh by default. An easy way to get the ssh program is to download and install GIT. The included git bash terminal program has a ssh command.
 
 ### Web Access
 
 Users can use their web browser to interact with the computer cluster and schedule jobs.
 
-[ROSIE Web Portal link](http://ood.rosie.msoe.edu)
-
-**Note:** This requires a user account on the compute cluster. 
+[ROSIE Web Portal link](https://dh-ood.hpc.msoe.edu)
 
 **VPN Note:** The cluster is only accessible within the MSOE campus network. If you are off campus, you must connect to the MSOE virtual private network. To connect to the vpn on linux, see convenience script in [utils](/utils) folder. On windows, visit sslvpn.msoe.edu to install the vpn client.
 
@@ -49,19 +66,10 @@ On the web portal you can
 
 #### Opening A Juypter Notebook Instance
 
-Log into the [ROSIE Web Portal](http://ood.rosie.msoe.edu) with your ROSIE username and password. Click on the Interactive Apps dropdown menu in the toolbar. From here you can launch a jupyter notebook web server for some amount of user specified time.
+Log into the [ROSIE Web Portal](http://dh-ood.hpc.msoe.edu) with your ROSIE username and password. Click on the Interactive Apps dropdown menu in the toolbar. From here you can launch a jupyter notebook web server for some amount of user specified time.
 
 **Note:** The shell access button will launch a terminal right in your browser. You can view and manage files on the node during the allocated time. 
 
-### Shell Access
-
-Advanced users can directly connect their command line interface to the machine and execute commands. 
-
-Connect with ssh.
-
-```
-    $ ssh username@shell.rosie.msoe.edu
-```
 
 ## Compute Infrastructure
 
@@ -80,7 +88,7 @@ ROSIE has two high speed access 90TB storage nodes.
 1. The first storage device stores the home folder for every cluster user.
 2. The second storage devices holds the `/data` resource share. This contains datasets and code samples for faculty and students researching with the clusters compute resources.
 
-Both of these data pools are mounted to every node on the cluster.
+Both of these data pools are mounted to each cluster compute node at the same mountpoint.
 
 This means that from any machine on the cluster, you can access your home folder files and research data files.
 
