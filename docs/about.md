@@ -21,8 +21,9 @@ This means that from any machine on the cluster, you can access your home folder
 
 ## Software Stack
 
+More details in **Command Line Interface**
+
 * SLURM Documentation [link](https://slurm.schedmd.com/documentation.html)
-  * The cluster runs the SLURM job management system.
 * Singularity Documentation [link](https://sylabs.io/guides/3.3/user-guide/index.html)
 
 On any node on the cluster, execute these commands to read detailed information about the commands.
