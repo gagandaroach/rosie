@@ -1,37 +1,14 @@
 # Milwaukee School of Engineering Academic High Performance Compute Cluster User Guide
 
-![ROSIE Supercomputer](/ROSIE.jpg)
-
-- [Milwaukee School of Engineering Academic High Performance Compute Cluster User Guide](#milwaukee-school-of-engineering-academic-high-performance-compute-cluster-user-guide)
-  - [Activating your User Account](#activating-your-user-account)
-  - [Access Guide](#access-guide)
-    - [Shell Access](#shell-access)
-    - [Web Access](#web-access)
-      - [Opening A Juypter Notebook Instance](#opening-a-juypter-notebook-instance)
-  - [Compute Infrastructure](#compute-infrastructure)
-  - [Storage Pools](#storage-pools)
-  - [Singularity Virtual Environments](#singularity-virtual-environments)
-    - [Executing commands in Singularity Image](#executing-commands-in-singularity-image)
-    - [Interactive Singularity Shell](#interactive-singularity-shell)
-    - [ROSIE Available Singularity Images](#rosie-available-singularity-images)
-    - [Building Singularity Images](#building-singularity-images)
-      - [Definition File](#definition-file)
-  - [Running Experiments with SLURM](#running-experiments-with-slurm)
-    - [Resource Partitions](#resource-partitions)
-    - [SLURM Run](#slurm-run)
-      - [Running barebones scripts in user-space](#running-barebones-scripts-in-user-space)
-      - [Running Singularity Images (recommended)](#running-singularity-images-recommended)
-    - [SLURM Batch](#slurm-batch)
-      - [Example Sbatch Script](#example-sbatch-script)
-    - [Other SLURM Commands](#other-slurm-commands)
-  - [How To Master Using ROSIE](#how-to-master-using-rosie)
-  - [Need Help? Any comments or concerns? Email me.](#need-help-any-comments-or-concerns-email-me)
+![ROSIE Supercomputer](_images/ROSIE.jpg)
 
 ## Activating your User Account
 
-The campus cluster uses its own account managemnt system. To request an account, contact the EECS department or the ROSIE SysAdmin.
+MSOE HPC uses . To request an account, contact the EECS department or the ROSIE SysAdmin.
 
 You will be given a username and temporary password. You must log in via shell to reset this temporary password before you can use the web portal.
+
+1. Connect to the cluster 
 
 ## Access Guide
 
@@ -315,11 +292,6 @@ On any node on the cluster, execute these commands to read detailed information 
   $ man sbatch
   $ singularity --help
 ```
-
-Slurm jobs scheduled by daroachg for mcw_research Medical Imaging are in mcw_research [folder](/mcw_research). Examples of sbatch scripts using srun and singularity to:
-
-  * StyleGAN deploy on dgx node
-  * Batched parallel data cleaning 
 
 ## Need Help? Any comments or concerns? Email me.
 
