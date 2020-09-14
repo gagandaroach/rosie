@@ -2,6 +2,7 @@
 
 - Getting Started
 
+* [Network Access](access.md)
 * [Account Activation](activate.md)
 * [Cluster Info](about.md)
 
