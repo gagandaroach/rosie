@@ -1,8 +1,8 @@
-## Campus Network
+## Campus Network <!-- {docsify-ignore-all} -->
 
 The cluster is only accessible on the campus network. If you are connecting from a building on campus, you are likely already attached to the campus network.
 
-To access ROSIE off campus, you must first connect to the MSOE VPN. You will log into the VPN with your campus credentials (@msoe.edu address).
+To access ROSIE off campus, you must first connect to the MSOE VPN. Download a vpn client and log in with your campus credentials (@msoe.edu address).
 
 ### Vpn Clients
 

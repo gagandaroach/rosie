@@ -4,5 +4,5 @@
 
 ## Quick Links
 
+* [Network Access](access.md)
 * [Activating Your Account](activate.md)
-* [Connecting to the Web Portal](web/dashboard.md)
