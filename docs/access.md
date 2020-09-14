@@ -6,7 +6,7 @@ To access ROSIE off campus, you must first connect to the MSOE VPN. Download a v
 
 ### Vpn Clients
 
-On **Windows** or **Mac**, you can download the GlobalProtect client from [vpn.msoe.edu](vpn.msoe.edu).
+On **Windows** or **Mac**, you can download the GlobalProtect client from [vpn.msoe.edu](https://vpn.msoe.edu).
 
 On **Linux**, a popular option is to use [openconnect](https://www.infradead.org/openconnect/index.html). Many distributions include openconnect with their default package manager. After you install openconnect, in your terminal execute: `sudo openconnect --protocol=gp vpn.msoe.edu`. 
 
