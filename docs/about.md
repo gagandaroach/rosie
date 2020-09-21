@@ -1,3 +1,5 @@
+![Cluster Overview](_images/cluster_overview.png)
+
 ## Compute Infrastructure
 
 ROSIE has 3 different types of computational processing nodes. There is a total of 27 compute nodes on the cluster.
@@ -17,7 +19,7 @@ ROSIE has two high speed access 90TB storage nodes.
 
 Both of these data pools are mounted to each cluster compute node at the same mountpoint.
 
-This means that from any machine on the cluster, you can access your home folder files and research data files.
+This means that from any machine on the cluster, you can access your home folder files and research data files with the same filepaths.
 
 ## Software Stack
 
