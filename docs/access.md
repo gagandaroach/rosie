@@ -1,10 +1,8 @@
-## Campus Network <!-- {docsify-ignore-all} -->
-
 The cluster is only accessible on the campus network. If you are connecting from a building on campus, you are likely already attached to the campus network.
 
 To access ROSIE off campus, you must first connect to the MSOE VPN. Download a vpn client and log in with your campus credentials (@msoe.edu address).
 
-### Vpn Clients
+## Vpn Clients
 
 On **Windows** or **Mac**, you can download the GlobalProtect client from [vpn.msoe.edu](https://vpn.msoe.edu).
 
@@ -20,10 +18,25 @@ Connect with **ssh**.
     $ ssh username@dh-mgmt2.hpc.msoe.edu
 ```
 
-**Windows** does not include ssh by default. An easy way to get the ssh program is to download and install [GIT](https://git-scm.com/). The included git bash terminal program has a ssh command. Another popular option is to use [PuTTY](https://www.putty.org/).
+### SSH Client
+
+**Windows** 
+
+The Windows Operating System does not include ssh by default. There are a number of popular options.
+
+* [PuTTY](https://www.putty.org/) is the classic Windows solution. Gives you a terminal login window with ssh. [Getting Started Guide](https://the.earth.li/~sgtatham/putty/0.74/htmldoc/Chapter2.html#gs)
+* Windows Subsystem for Linux [Guide](https://docs.microsoft.com/en-us/windows/wsl/install-win10). Brings a linux terminal program to the Windows OS.
+* Download and install [GIT](https://git-scm.com/). The included git bash terminal program has a ssh command.
+
+**Mac or Linux**
+
+Your operating system includes this by default, yay! Launch terminal and issue `which ssh` to see the location of the ssh program binary file.
+
+
+*More info about SSH available on the [OpenSSH homepage](https://openssh.com).*
 
 ## Web Browser Access
 
-Users can use their web browser to interact with the computer cluster and schedule jobs.
-
 [ROSIE Web Portal link](https://dh-ood.hpc.msoe.edu)
+
+Users can use their web browser to interact with ROSIE. More information on the [Web Interface](web/dashboard.md) section of guide.
