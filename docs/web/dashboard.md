@@ -4,6 +4,8 @@ Users can use their web browser to interact with the computer cluster and schedu
 
 **VPN Note:** The cluster is only accessible within the MSOE campus network. If you are off campus, you must connect to the MSOE virtual private network. See [Network Access](../access.md) for additional details.
 
+![Dasbhoard Screenshot](../_images/dashboard.png)
+
 On the web portal you can
 
 * Open a Jupyter notebook instance for as many hours as needed.

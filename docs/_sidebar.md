@@ -2,16 +2,23 @@
 
 - Getting Started
 
+* [Cluster Info](about.md)
 * [Network Access](access.md)
 * [Account Activation](activate.md)
-* [Cluster Info](about.md)
 
 - Web Browser Interface
 
-* [ROSIE Web Portal](web/dashboard.md)
+* [ROSIE Web Dashboard](web/dashboard.md)
 * [Jupyter Notebooks](web/ipynb.md)
+* [Files Browser](web/files.md)
+* [Terminal](web/terminal.md)
 
 - Command Line Interface
 
-* [Singularity Virtual Environments](cli/Singularity.md)
-* [Running Experiments with SLURM](cli/SLURM.md)
+* [SLURM Job Scheduler](cli/SLURM.md)
+* [Singularity Containerization](cli/Singularity.md)
+
+- Pro Tips
+
+* [Using Linux CLI](tips/linux.md)
+* [Vscode Remote Development](tips/vscode.md)
