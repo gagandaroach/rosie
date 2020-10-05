@@ -1,10 +1,23 @@
-# Welcome <!-- {docsify-ignore-all} -->
+# MSOE.DEV | The Rosie User Guide
 
-This is the ROSIE user guide. ROSIE is the name of an academic high performance computing cluster for the Milwaukee School of Engineering.
+![ROSIE Supercomputer](_images/ROSIE.jpg)
 
-See the topics in the sidebar to learn more.
+ROSIE is the academic high performance compute cluster for the Milwaukee School of Engineering in Wisconsin, USA.
 
-**Note: This page is in early development.**
+This guide is tailored for MSOE students, faculty, and community ROSIE users. You can navigate the guide materials using the sidebar.
+
+## Getting Started
+
+* [Network Access](access.md)
+* [Activating Your Account](activate.md)
+
+## User Quicklinks
+
+* [ROSIE Web Portal](https://dh-ood.hpc.msoe.edu/)
+
+## Contributions
+
+This guide is a work in progress. If you have any suggestions, please message me or leave a issue on this page's github [repository](https://github.com/gagandaroach/rosie).
 
 ## Need Help? Any comments or concerns?
 

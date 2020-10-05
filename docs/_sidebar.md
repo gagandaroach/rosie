@@ -1,5 +1,3 @@
-* [Home](/)
-
 - Getting Started
 
 * [Cluster Info](about.md)
