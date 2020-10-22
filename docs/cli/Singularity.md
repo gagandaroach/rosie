@@ -40,7 +40,7 @@ You can attach gpus to the interactive shell.
 
 ```bash
 # --nv flags attached node gpus and tensorflow
-$ singularity shell --nv -B /data:/data /data/containers/msoe-tensorflow.sif
+$ srun --pty --gres=gpu:t4:1 singularity shell --nv -B /data:/data /data/containers/msoe-tensorflow.sif
 ```
 
 If you combine the above command with SLURM, you can schedule a active shell session on a T4 compute node!

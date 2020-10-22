@@ -13,8 +13,10 @@
 
 - Command Line Interface
 
-* [SLURM Job Scheduler](cli/SLURM.md)
-* [Singularity Containerization](cli/Singularity.md)
+* [SLURM Workload Manager](cli/SLURM.md)
+* [RUN Jobs](cli/srun.md)
+* [Run Batch Scripts](cli/sbatch.md)
+* [Singularity Containers](cli/Singularity.md)
 
 - Pro Tips
 
