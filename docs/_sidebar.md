@@ -1,10 +1,9 @@
 - Getting Started
 
-* [Cluster Info](about.md)
 * [Network Access](access.md)
-* [Account Activation](activate.md)
+* [Cluster Info](about.md)
 
-- Web Browser Interface
+- Web Portal
 
 * [ROSIE Web Dashboard](web/dashboard.md)
 * [Jupyter Notebooks](web/ipynb.md)
@@ -22,3 +21,4 @@
 
 * [Using Linux CLI](tips/linux.md)
 * [Vscode Remote Development](tips/vscode.md)
+* [Account Activation (Deprecated)](activate.md)

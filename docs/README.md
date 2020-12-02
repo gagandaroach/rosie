@@ -1,19 +1,22 @@
 # MSOE.DEV | The Rosie User Guide
 
-![ROSIE Supercomputer](_images/ROSIE.jpg)
+![Rosie Supercomputer](_images/Rosie.jpg)
 
-ROSIE is the academic high performance compute cluster for the Milwaukee School of Engineering in Wisconsin, USA.
+Rosie is the academic high performance compute cluster for the Milwaukee School of Engineering in Wisconsin, USA.
 
-This guide is tailored for MSOE students, faculty, and community ROSIE users. You can navigate the guide materials using the sidebar.
+This guide is tailored for MSOE students, faculty, and community Rosie users. You can navigate the guide materials using the sidebar.
+
+## What Makes a Supercomputer “Super?”
+
+[What is a supercomputer?](https://player.vimeo.com/video/438661086 ':include :type=iframe')
 
 ## Getting Started
 
 * [Network Access](access.md)
-* [Activating Your Account](activate.md)
 
 ## User Quicklinks
 
-* [ROSIE Web Portal](https://dh-ood.hpc.msoe.edu/)
+* [Rosie Web Portal](https://dh-ood.hpc.msoe.edu/)
 
 ## Contributions
 
