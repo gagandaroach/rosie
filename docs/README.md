@@ -1,6 +1,6 @@
 # MSOE.DEV | The Rosie User Guide
 
-![Rosie Supercomputer](_images/Rosie.jpg)
+![Rosie Supercomputer](_images/ROSIE.jpg)
 
 Rosie is the academic high performance compute cluster for the Milwaukee School of Engineering in Wisconsin, USA.
 
