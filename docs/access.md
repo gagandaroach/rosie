@@ -27,6 +27,12 @@ Users can use their web browser to interact with Rosie. More information in the 
 
 ![Web Login](_images/web_login.png)
 
+### New Account Login
+
+When logging into Rosie for the first time (via the web portal), the system will ask you to create a home folder. Click the steps in sequence to start using the supercomputer.
+
+![Web Login](_images/ood_new_acc.png)
+
 ## Shell Access
 
 Users can directly connect to the management nodes and open a command line interface.
