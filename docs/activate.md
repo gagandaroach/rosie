@@ -5,7 +5,7 @@ EECS and ROSIE use a separate account management system than the campus network.
 
 You will be given a username and a one time password (OTP). **Note: You must log in via shell to reset the OTP before you can use the web portal.**
 
-## Steps <!-- {docsify-ignore-all} -->
+## Steps
 
 ![Account Activation Example](_images/ex_activate_steps.png)
 
