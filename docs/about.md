@@ -1,4 +1,14 @@
+## Cluster Overview
+
 ![Cluster Overview](_images/cluster_overview.png)
+
+## Network Overview
+
+![Network Overview](_images/cluster_networking.png)
+
+## Rack Layout
+
+![Rack Layout](_images/cluster_rack.png)
 
 ## Compute Infrastructure
 
@@ -10,9 +20,10 @@ ROSIE has 3 different types of computational processing nodes. There is a total 
 | T4 | 20 | Intel Xeon Gold 6240 @ 2.60GHz | 72 | 376G | 4x Tesla T4 | 10.199.0.[1-20] |
 | DGX-1 | 3 | Intel Xeon CPU E5-2698 v4 @ 2.20GHz | 80 | 503G | 8x Tesla V100-SXM2 | 10.199.0.10[1-3] |
 
+
 ## Storage Pools
 
-ROSIE has two high speed access 90TB storage nodes.
+ROSIE has two high speed access 100TB storage nodes.
 
 1. The first storage device stores the home folder for every cluster user.
 2. The second storage devices holds the `/data` resource share. This contains datasets and code samples for faculty and students researching with the clusters compute resources.
@@ -23,7 +34,13 @@ This means that from any machine on the cluster, you can access your home folder
 
 ## Software Stack
 
-More details in **Command Line Interface**
+**OpenOnDemand**
+
+More details in [Web Portal](web/dashboard.md)
+
+**SLURM**
+
+More details in [Command Line Interface](cli/SLURM.md)
 
 * SLURM Documentation [link](https://slurm.schedmd.com/documentation.html)
 * Singularity Documentation [link](https://sylabs.io/guides/3.3/user-guide/index.html)
