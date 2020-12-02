@@ -12,8 +12,8 @@ On **Linux**, a popular option is to use [openconnect](https://www.infradead.org
 
 The Rosie account management system is synchronized with the MSOE campus Active Directory system. You can access Rosie with your campus username and password.
 
-* Username: `msoe_username@ad.msoe.edu`
-* Password: `msoe_campus_password`
+* Rosie Username: `msoe_username@ad.msoe.edu`
+* Rosie Password: `msoe_campus_password`
 
 Where `msoe_username` is the first part of your campus email address. For example, the student John Smith has a MSOE email address `smithj@msoe.edu`, an MSOE username of `smithj`, and a Rosie login of `smithj@ad.msoe.edu`.
 
@@ -26,10 +26,6 @@ Users can use their web browser to interact with Rosie. More information in the 
 **Web Login Screenshot**
 
 ![Web Login](_images/web_login.png)
-
-**Web Portal Screenshot**
-
-![Web Portal](_images/dashboard.png)
 
 ## Shell Access
 
