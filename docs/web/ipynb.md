@@ -2,7 +2,7 @@ Log into the [ROSIE Web Portal](http://dh-ood.hpc.msoe.edu) with your ROSIE user
 
 **Note:** The shell access button will launch a terminal right in your browser. You can view and manage files on the node during the allocated time.
 
-![Jupyter Notebook Example](../_images/ipynb_example.png)
+![Jupyter Notebook Example](../_images/ipynb_example.PNG)
 
 ## Launching Jupyter Notebook Server
 
