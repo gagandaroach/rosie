@@ -31,7 +31,16 @@ Users can use their web browser to interact with Rosie. More information in the 
 
 When logging into Rosie for the first time (via the web portal), the system will ask you to create a home folder. Click the steps in sequence to start using the supercomputer.
 
+**New user greeting.**.
+
 ![Web Login](_images/ood_new_acc.png)
+
+**Web terminal opens in new tab. Type `yes` to continue.**.
+
+> [!ATTENTION]
+> The shell will prompt you for your password to log in. As a privacy feature, the shell will hide pressed keys from the screen. After typing in your password, press the enter key to submit.
+
+![Web Login](_images/ood_new_acc2.png)
 
 ## Shell Access
 
