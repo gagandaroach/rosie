@@ -29,16 +29,16 @@ Users can use their web browser to interact with Rosie. More information in the 
 
 ### New Account Login
 
-When logging into Rosie for the first time (via the web portal), the system will ask you to create a home folder. Click the steps in sequence to start using the supercomputer.  Note that when you enter your password in a linux shell, it will not look like you are typing anything, so just enter your MSOE password carefully, and hit enter.  
+When logging into Rosie for the first time (via the web portal), the system will ask you to create a home folder. Click the steps in sequence to start using the supercomputer.  
+
+> [!Tip]
+> Note that when you enter your password in a linux shell, it will not look like you are typing anything, so just enter your MSOE password carefully, and hit enter.
 
 **New user greeting.**.
 
 ![Web Login](_images/ood_new_acc.png)
 
 **Web terminal opens in new tab. Type `yes` to continue.**.
-
-> [!ATTENTION]
-> The shell will prompt you for your password to log in. As a privacy feature, the shell will hide pressed keys from the screen. After typing in your password, press the enter key to submit.
 
 ![Web Login](_images/ood_new_acc2.png)
 
