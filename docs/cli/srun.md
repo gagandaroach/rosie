@@ -15,7 +15,17 @@ $ srun --partition=teaching --nodes=3 --cpus-per-task=10 python multi_node_comma
 ### Requesting GPU Resources
 
 ```bash
-$ srun --gres=gpu:t4:1 nvidia-smi
+# One T4 GPU
+$ srun --partition=batch --gres=gpu:t4:1 nvidia-smi
+
+# Nvidia dgx partition
+$ srun --partition=dgx hostname
+
+# errors out, you must ask slurm for gpus
+$ srun --partition=dgx nvidia-smi
+
+# all 8 v100 gpus
+$ srun --partition=dgx --gres=gpu:v100:8 nvidia-smi
 ```
 
 ### Running Singularity Images
