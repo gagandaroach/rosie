@@ -34,11 +34,11 @@ When logging into Rosie for the first time (via the web portal), the system will
 > [!Tip]
 > Note that when you enter your password in a linux shell, it will not look like you are typing anything, so just enter your MSOE password carefully, and hit enter.
 
-**New user greeting.**.
+**New user greeting.**
 
 ![Web Login](_images/ood_new_acc.png)
 
-**Web terminal opens in new tab. Type `yes` to continue.**.
+**Web terminal opens in new tab. Type `yes` to continue.**
 
 ![Web Login](_images/ood_new_acc2.png)
 
