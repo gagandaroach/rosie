@@ -3,12 +3,16 @@
 `srun` allows the user to run a job on Rosie. A job can be a shell script, python file, and more.
 
 ```bash
-$ srun ls
+$ srun hostname
+$ srun -N 3 hostname
+$ srun --gres=gpu:t4:2 nvidia-smi
+$ srun --gres=gpu:v100:8 nvidia-smi
 ```
 
 The partition flag specifies what resouce set to use in the cluster. You can specify certain names, gpu configs, or even node counts with the srun command. 
 
 ```bash
+# for exampke, with a python script
 $ srun --partition=teaching --nodes=3 --cpus-per-task=10 python multi_node_command.py
 ```
 
@@ -18,13 +22,16 @@ $ srun --partition=teaching --nodes=3 --cpus-per-task=10 python multi_node_comma
 # One T4 GPU
 $ srun --partition=batch --gres=gpu:t4:1 nvidia-smi
 
+# two t4 gpus, partition is optional
+$ srun --gres=gpu:t4:2 nvidia-smi
+
 # Nvidia dgx partition
 $ srun --partition=dgx hostname
 
-# errors out, you must ask slurm for gpus
+# this command will error out, you must ask slurm for gpus
 $ srun --partition=dgx nvidia-smi
 
-# all 8 v100 gpus
+# run again, asking for all 8 v100 gpus
 $ srun --partition=dgx --gres=gpu:v100:8 nvidia-smi
 ```
 
