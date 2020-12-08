@@ -29,7 +29,7 @@ Users can use their web browser to interact with Rosie. More information in the 
 
 ### New Account Login
 
-When logging into Rosie for the first time (via the web portal), the system will ask you to create a home folder. Click the steps in sequence to start using the supercomputer.
+When logging into Rosie for the first time (via the web portal), the system will ask you to create a home folder. Click the steps in sequence to start using the supercomputer.  Note that when you enter your password in a linux shell, it will not look like you are typing anything, so just enter your MSOE password carefully, and hit enter.  
 
 **New user greeting.**.
 
