@@ -2,7 +2,13 @@
 
 ![Rosie Supercomputer](_images/ROSIE.jpg)
 
-Rosie is the academic high performance compute cluster for the Milwaukee School of Engineering in Wisconsin, USA.
+Rosie is name of the academic high performance computer for the [Milwaukee School of Engineering][url_msoe] in Milwaukee, Wisconsin USA.
+
+* 1,000 CPU CORES
+* 10 TB RAM
+* 100 TB NVMe SSD Storage
+* 400 TB long-term storage
+* 100+ GPUs with 2TB GPU Memory
 
 This guide is tailored for MSOE students, faculty, and community Rosie users. You can navigate the guide materials using the sidebar.
 
@@ -25,3 +31,5 @@ This guide is a work in progress. If you have any suggestions, please message me
 ## Need Help? Any comments or concerns?
 
 Email or message me on teams. EECS SysAdmin Gagan Daroach <daroachgb@msoe.edu>
+
+[url_msoe]: https://msoe.edu
