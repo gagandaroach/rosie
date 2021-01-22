@@ -40,7 +40,7 @@ When logging into Rosie for the first time (via the web portal), the system will
 
 **Web terminal opens in new tab. Type `yes` to continue.**
 
-![Web Login](_images/ood_new_acc2.png)
+![Web Login Create Home Directory](_images/ood_new_acc2.png)
 
 ## Shell Access
 
@@ -69,4 +69,8 @@ Your operating system includes this by default, yay! Launch terminal and issue `
 
 *More info about SSH available on the [OpenSSH homepage](https://openssh.com).*
 
+### SLURM Batch Job Submission Failed
 
+![New User Interactive Apps Can't run.](_images/ood_new_acc3_slurm_error.png)
+
+If you cannot launch an interactive app on the cluster and are running into this error, contact the System Adminstrator to enroll as an authorized SLURM user able to request supercomputer resources.
