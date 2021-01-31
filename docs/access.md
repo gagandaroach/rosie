@@ -46,7 +46,7 @@ When logging into Rosie for the first time (via the web portal), the system will
 
 ![New User Interactive Apps Can't run.](_images/ood_new_acc3_slurm_error.png)
 
-New users may not be able to launch an interactive app on the cluster. If you are running into this error, contact the System Administrator to enroll as an authorized SLURM user able to request supercomputer resources.
+New users may not be able to launch an interactive app on the cluster. If you are running into this error, contact the System Administrator and ask to enroll as an authorized SLURM user able to request supercomputer resources.
 
 ## Shell Access
 
