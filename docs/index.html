@@ -9,11 +9,17 @@
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css">
 </head>
 <body>
+  <nav>
+    <a href="#">Home</a>
+    <a href="https://dh-ood.hpc.msoe.edu/">Rosie Web Portal</a>
+    <a href="https://github.com/gagandaroach/rosie/issues">Report Issue or Feature Request</a>
+  </nav>
   <div id="app"></div>
   <script>
     window.$docsify = {
       name: 'Rosie User Guide',
       repo: 'https://github.com/gagandaroach/rosie',
+      homepage: 'home.md',
       loadSidebar: true,
       autoHeader: true,
       subMaxLevel: 3,
@@ -23,7 +29,7 @@
       search: {
         maxAge: 86400000, // Expiration time, the default one day
         paths: 'auto',
-        placeholder: 'Type to search',
+        placeholder: 'Type to search the guide',
         noData: 'No Results!',
         // Headline depth, 1 - 6
         depth: 6,
