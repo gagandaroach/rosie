@@ -3,10 +3,16 @@
 `srun` allows the user to run a job on Rosie. A job can be a shell script, python file, and more.
 
 ```bash
+# Ask slurm to run the "hostname" command.
 $ srun hostname
+# Ask slurm to run the "hostname" command on 3 nodes.
 $ srun -N 3 hostname
+# Ask slurm to run the "nvidia-smi" command on a node with 2 t4 gpus.
 $ srun --gres=gpu:t4:2 nvidia-smi
+# Ask slurm to run the "nvidia-smi" command on a node with 8 v100 gpus.
 $ srun --gres=gpu:v100:8 nvidia-smi
+# Ask slurm to email me alerts for this task.
+$ srun --mail-user=student@msoe.edu --mail-type=BEGIN,END,FAIL hostname
 ```
 
 The partition flag specifies what resouce set to use in the cluster. You can specify certain names, gpu configs, or even node counts with the srun command. 
@@ -20,18 +26,21 @@ $ srun --partition=teaching --nodes=3 --cpus-per-task=10 python multi_node_comma
 
 ```bash
 # One T4 GPU
-$ srun --partition=batch --gres=gpu:t4:1 nvidia-smi
+$ srun --gres=gpu:t4:1 --partition=teaching nvidia-smi
 
-# two t4 gpus, partition is optional
+# Two T4 gpus, partition is optional
 $ srun --gres=gpu:t4:2 nvidia-smi
 
 # Nvidia dgx partition
-$ srun --partition=dgx hostname
+$ srun  hostname
 
 # this command will error out, you must ask slurm for gpus
-$ srun --partition=dgx nvidia-smi
+$ srun --partition=teaching nvidia-smi
 
-# run again, asking for all 8 v100 gpus
+# DGX-1 Deep Learning Parition
+# Allocate just one gpu,
+$ srun --partition=dgx --gres=gpu:v100:1 nvidia-smi
+# or all 8!
 $ srun --partition=dgx --gres=gpu:v100:8 nvidia-smi
 ```
 
