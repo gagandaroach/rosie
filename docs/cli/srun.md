@@ -15,13 +15,6 @@ $ srun --gres=gpu:v100:8 nvidia-smi
 $ srun --mail-user=student@msoe.edu --mail-type=BEGIN,END,FAIL hostname
 ```
 
-The partition flag specifies what resouce set to use in the cluster. You can specify certain names, gpu configs, or even node counts with the srun command. 
-
-```bash
-# for exampke, with a python script
-$ srun --partition=teaching --nodes=3 --cpus-per-task=10 python multi_node_command.py
-```
-
 ### Requesting GPU Resources
 
 ```bash
