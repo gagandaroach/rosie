@@ -10,4 +10,4 @@ To execute these scripts, use sbatch on the management nodes.
     $ sbatch train_1gpu_t4.sh
 ```
 
-**Note:** Read **srun** and **sbatch** manual pages for detailed run parameters.
+**Note:** Read **srun** and **sbatch** manual pages for detailed run parameters. `$ man sbatch`. 
