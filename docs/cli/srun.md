@@ -42,10 +42,7 @@ $ srun --partition=dgx --gres=gpu:v100:8 nvidia-smi
 $ srun --partition=teaching singularity exec -B /data:/data /data/containers/ubuntu_20.04.sif cat /etc/os-release
 
 # high performance batch processing node with two tesla T4 gpu
-$ srun --partition=batch --gpus=2 --cpus-per-gpu=8 singularity exec --nv -B /data:/data ${CONTAINER} python ${SCRIPT_PATH} ${SCRIPT_ARGS}
-
-# research computing node with 8 tesla T100 gpu connected with nvlink
-$ srun --partition=dgx --gpus=8 --cpus-per-gpu=8 singularity exec --nv -B /data:/data ${CONTAINER} python ${SCRIPT_PATH} ${SCRIPT_ARGS}
+$ srun --partition=batch --gres=gpu:t4:2 --cpus-per-gpu=8 singularity exec --nv -B /data:/data /data/containers/msoe-tensorflow.sif nvidia-smi
 ```
 
 The `--nv` flag auto mounts NVIDIA gpu resources to the singularity container. You can build singularity containers from any image on the Nvidia gpu cloud.

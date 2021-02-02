@@ -13,12 +13,12 @@
 - Command Line Interface
 
 * [SLURM Workload Manager](cli/SLURM.md)
-* [RUN Jobs](cli/srun.md)
-* [Run Batch Scripts](cli/sbatch.md)
+* [Rosie basics with srun](cli/srun.md)
+* [Scripting jobs with sbatch](cli/sbatch.md)
 * [Singularity Containers](cli/Singularity.md)
 
-- Pro Tips
+- Tips
 
-* [Using Linux CLI](tips/linux.md)
 * [Vscode Remote Development](tips/vscode.md)
+* [Using Linux CLI](tips/linux.md)
 * [Account Activation (Deprecated)](activate.md)
