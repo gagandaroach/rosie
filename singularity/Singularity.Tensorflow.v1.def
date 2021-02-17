@@ -21,6 +21,8 @@ From: nvcr.io/nvidia/tensorflow:20.07-tf1-py3
         numpy \
         pandas \
         scikit-learn \
-        jupyter
+        jupyter \
+        horovod[tensorflow,keras]==0.18.2 \
+        keras==2.3.1
     chmod 777 /usr/local/bin/msoe_launch_jupyter
     
