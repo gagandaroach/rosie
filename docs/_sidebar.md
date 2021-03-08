@@ -7,6 +7,7 @@
 
 * [ROSIE Web Dashboard](web/dashboard.md)
 * [Jupyter Notebooks](web/ipynb.md)
+* [VSCode Server](web/codeserver.md)
 * [Files Browser](web/files.md)
 * [Terminal](web/terminal.md)
 
