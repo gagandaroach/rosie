@@ -16,23 +16,24 @@ You can then choose the server type and launch options.
 
 ## Server Types
 
-| Name                    | CPU | GPU | Notes                             |
-|-------------------------|-----|-----|-----------------------------------|
-| Jupyter (CPU)           | Yes | No  | Userspace python environment.     |
-| Jupyter (GPU)           | Yes | Yes | Userspace python environment with accelerated computing hardware. |
-| Jupyter (Containerized) | Yes | Yes | Containerized python environment with accelerated computing hardware. Use for managed library environments. |
+| Name                    | Description                             |
+|-------------------------|-----------------------------------|
+| Jupyter (Anaconda)           | User base conda environment.     |
+| Jupyter (Singularity)        | Containerized python environment with accelerated computing hardware. Use for exploring managed library environments. |
 
-## Installing Python Packages
+## Jupyter (Anaconda)
+
+This runs in the base user conda environment.
+
+**Feature Request** Working on enabling users to select other environments here.
+
+## Jupyter (Singularity)
+
+Runs the jupyter notebook server with the users base conda environment.
+
+### Adding Python Packages To Singularity Images
 
 You can install python packages inside of the jupyter notebook servers.
-
-**CPU** or **GPU**
-
-You can install packages in a notebook cell by executing:
-
-`!pip install <packagename>`
-
-**Containerized Instance**
 
 The container's system directory is read-only. You can install a python package in userspace with the `--user` flag.
 
@@ -44,4 +45,4 @@ The container's system directory is read-only. You can install a python package 
 
 ## Accessing data
 
-The jupyter notebook server will have access to your home directory at `/home/username`. Additionally, the cluster datapool will be mounted at `/data`. You can read/write files from the datapool with your scripts.
+The jupyter notebook server will have access to your home directory at `/home/username`. Additionally, the cluster datapool will be mounted at `/data`. You can read/write files from the datapool with your scripts. An easy way to access the data pool is to create a symbolic link in your home folder. See `$ man ln` for info on creating the link.
