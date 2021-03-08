@@ -12,7 +12,7 @@ The launch code server page allows a user to select their starting working folde
 
 To enable python debugging on Visual Studio code, install the ms-python package in the vscode extension bar.
 
-**Note:** There is a bug with the most recent version of python vscode extension - `v2021.x` To enable python debuging, you must install a previous verious of the extension. You can do this with the dropdown menu next to uninstall. Select the most recent `2020.x` version of the python extension.
+**Note:** There is a bug with the most recent version of python vscode extension - `v2021.x` To enable python debugging, you must install a previous verious of the extension. You can do this with the dropdown menu next to uninstall. Select the most recent `2020.x` version of the python extension.
 
 **Check for invalid version**
 
