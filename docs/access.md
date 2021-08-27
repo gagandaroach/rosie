@@ -8,14 +8,13 @@ On **Windows** or **Mac**, you can download the GlobalProtect client from [vpn.m
 
 On **Linux**, a popular option is to use [openconnect](https://www.infradead.org/openconnect/index.html). Many distributions include openconnect with their default package manager. After you install openconnect, in your terminal execute: `sudo openconnect --protocol=gp vpn.msoe.edu`. 
 
-## Your Cluster Account
+## Your Rosie Cluster Account
 
-The Rosie account management system is synchronized with the MSOE campus Active Directory system. You can access Rosie with your campus username and password.
+EECS and ROSIE use a separate account management system than the campus network. To request an account, contact the EECS department or the ROSIE SysAdmin.
 
-* Rosie Username: `msoe_username@ad.msoe.edu`
-* Rosie Password: `msoe_campus_password`
+You will be given a username and a one time password (OTP). **Note: You must log in via shell to reset the OTP before you can use the web portal.**
 
-Where `msoe_username` is the first part of your campus email address. For example, the student John Smith has a MSOE email address `smithj@msoe.edu`, an MSOE username of `smithj`, and a Rosie login of `smithj@ad.msoe.edu`.
+[Account Activation Instructions](activate.md)
 
 ## Web Browser Access
 
@@ -42,20 +41,27 @@ When logging into Rosie for the first time (via the web portal), the system will
 
 ![Web Login Create Home Directory](_images/ood_new_acc2.png)
 
-### SLURM Batch Job Submission Failed
-
-![New User Interactive Apps Can't run.](_images/ood_new_acc3_slurm_error.png)
+**SLURM Batch Job Submission Failed**
 
 New users may not be able to launch an interactive app on the cluster. If you are running into this error, contact the System Administrator and ask to enroll as an authorized SLURM user able to request supercomputer resources.
+
+![New User Interactive Apps Can't run.](_images/ood_new_acc3_slurm_error.png)
 
 ## Shell Access
 
 Users can directly connect to the management nodes and open a command line interface.
 
-Connect with **ssh**.
+Connect with **ssh** to management node 2, 3, or 4.
 
-```
-    $ ssh "msoeusername@ad.msoe.edu"@dh-mgmt4.hpc.msoe.edu
+```bash
+    # connect to mgmt2
+    $ ssh username@dh-mgmt2.hpc.msoe.edu
+
+    # connect to mgmt3
+    $ ssh username@dh-mgmt3.hpc.msoe.edu
+
+    # connect to mgmt4
+    $ ssh username@dh-mgmt4.hpc.msoe.edu
 ```
 
 ### SSH Terminal Program
@@ -75,3 +81,10 @@ Your operating system includes this by default, yay! Launch terminal and issue `
 
 *More info about SSH available on the [OpenSSH homepage](https://openssh.com).*
 
+### Connecting with PuTTY on Windows
+
+1. Install the PuTTY program
+2. Launch PuTTY, a PuTTY Configuration Dialog pops up
+3. In the host name field input a managment node hostname, e.g. `dh-mgmt2.hpc.msoe.edu`
+4. Click Open
+5. Input your Rosie username and password.

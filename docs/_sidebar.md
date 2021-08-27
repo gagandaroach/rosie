@@ -1,15 +1,16 @@
 - Getting Started
 
 * [Network Access](access.md)
-* [Cluster Info](about.md)
+* [Account Activation](activate.md)
+* [Cluster Overview](about.md)
 
-- Web Portal
+- Rosie Web Portal
 
-* [ROSIE Web Dashboard](web/dashboard.md)
-* [Jupyter Notebooks](web/ipynb.md)
-* [VSCode Server](web/codeserver.md)
-* [Files Browser](web/files.md)
+* [Dashboard Homepage](web/dashboard.md)
 * [Terminal](web/terminal.md)
+* [Files Browser](web/files.md)
+* [Jupyter Notebooks](web/ipynb.md)
+* [Code Server IDE](web/codeserver.md)
 
 - Command Line Interface
 
@@ -22,4 +23,3 @@
 
 * [Vscode Remote Development](tips/vscode.md)
 * [Using Linux CLI](tips/linux.md)
-* [Account Activation (Deprecated)](activate.md)

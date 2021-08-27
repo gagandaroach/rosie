@@ -1,6 +1,3 @@
-> [!ATTENTION]
-> After Nov 30 2020 this page is deprecated. The campus account management system has been synced with the cluster. To log in, see the [access guide](access.md).
-
 EECS and ROSIE use a separate account management system than the campus network. To request an account, contact the EECS department or the ROSIE SysAdmin.
 
 You will be given a username and a one time password (OTP). **Note: You must log in via shell to reset the OTP before you can use the web portal.**
