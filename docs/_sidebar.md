@@ -14,8 +14,8 @@
 - Command Line Interface
 
 * [SLURM Workload Manager Intro](cli/SLURM.md)
-* [SRUN - executing simple tasks](cli/srun.md)
-* [SBATCH - scripting complicated compute tasks](cli/sbatch.md)
+* [SRUN - launching simple tasks](cli/srun.md)
+* [SBATCH - scripting complex tasks](cli/sbatch.md)
 * [Containerization with Singularity](cli/Singularity.md)
 
 - Tips
