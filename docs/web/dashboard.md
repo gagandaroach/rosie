@@ -15,4 +15,18 @@ On the web portal you can
 
 **Interactive Apps**
 
+Rosie contains a number of useful interactive apps.
+
+* Rosie VNC Desktop
+* Jupyter Lab
+* Jupyter Notebook
+* VS Code Server IDE
+* DIGITS
+
+![Inter Apps](../_images/ood_interactive_apps.png)
+
+Usage information for each interactive app in Guide Sidebar.
+
+**Example running interactive apps**
+
 ![Interactive Apps](../_images/ood_running_apps.png)
