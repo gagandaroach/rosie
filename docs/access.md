@@ -72,6 +72,8 @@ variety of ways. More information in the [Web Portal](web/dashboard.md) section 
 
 [Rosie Web Portal link](https://dh-ood.hpc.msoe.edu)
 
+**Note:** Users must activate their account via Shell before being able to access the web terminal.
+
 ## Account Activation
 
 ![Account Activation Example](_images/ex_activate_steps.png)
