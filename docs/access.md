@@ -78,13 +78,22 @@ The Windows Operating System does not include ssh by default. There are a number
 
 Your operating system includes this by default, yay! Launch terminal and issue `which ssh` to see the location of the ssh program binary file.
 
+Then enter the ssh connect commands above.
 
 *More info about SSH available on the [OpenSSH homepage](https://openssh.com).*
 
 ### Connecting with PuTTY on Windows
 
 1. Install the PuTTY program
+
 2. Launch PuTTY, a PuTTY Configuration Dialog pops up
+
 3. In the host name field input a managment node hostname, e.g. `dh-mgmt2.hpc.msoe.edu`
+
+![Input PuTTY hostname](_images/putty_connect_example.png)
+
 4. Click Open
+
 5. Input your Rosie username and password.
+
+![Input PuTTY username](_images/putty_login_example.png)
