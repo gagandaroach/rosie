@@ -16,36 +16,35 @@ You will be given a username and a one time password (OTP). **Note: You must log
 
 [Account Activation Instructions](activate.md)
 
-## Web Browser Access
+## Account Activation
 
-Users can use their web browser to interact with Rosie. More information in the [Web Portal](web/dashboard.md) section of guide.
+EECS and ROSIE use a separate account management system than the campus network. To request an account, contact the EECS department or the ROSIE SysAdmin.
 
-[Rosie Web Portal link](https://dh-ood.hpc.msoe.edu)
+You will be given a username and a one time password (OTP). **Note: You must log in via shell to reset the OTP before you can use the web portal.**
 
-**Web Login Screenshot**
+### Activation Instructions
 
-![Web Login](_images/web_login.png)
+![Account Activation Example](_images/ex_activate_steps.png)
 
-### New Account Login
+1. Use **ssh** to connect to a head management node.
+   
+Launch your terminal program and input the command (replacing username with your own):
 
-When logging into Rosie for the first time (via the web portal), the system will ask you to create a home folder. Click the steps in sequence to start using the supercomputer.  
+```shell
+$ ssh username@dh-mgmt2.hpc.msoe.edu
+```
 
-> [!Tip]
-> Note that when you enter your password in a linux shell, it will not look like you are typing anything, so just enter your MSOE password carefully, and hit enter.
+See the [Network Access page](access.md) for details on preparing an ssh client.
 
-**New user greeting.**
+2. The system will prompt for your one time password. Input this to proceed.
 
-![Web Login](_images/ood_new_acc.png)
+3. Re-enter your one time password to begin the password change process.
 
-**Web terminal opens in new tab. Type `yes` to continue.**
+4. Input your desired password. It is critical to follow healthy password protocol here - the more complicated the more secure.
 
-![Web Login Create Home Directory](_images/ood_new_acc2.png)
+5. Verify your password by typing it in again.
 
-**SLURM Batch Job Submission Failed**
-
-New users may not be able to launch an interactive app on the cluster. If you are running into this error, contact the System Administrator and ask to enroll as an authorized SLURM user able to request supercomputer resources.
-
-![New User Interactive Apps Can't run.](_images/ood_new_acc3_slurm_error.png)
+After inputting your new password twice, the system will permit entry into the management node. You can now close this connecting or explore command line interface with the cluster. You can visit the web portal and login with your username and new password.
 
 ## Shell Access
 
@@ -97,3 +96,9 @@ Then enter the ssh connect commands above.
 5. Input your Rosie username and password.
 
 ![Input PuTTY username](_images/putty_login_example.png)
+
+## Web Browser Access
+
+Users can use their web browser to interact with Rosie in a variety of ways. More information in the [Web Portal](web/dashboard.md) section of guide.
+
+[Rosie Web Portal link](https://dh-ood.hpc.msoe.edu)

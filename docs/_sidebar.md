@@ -1,7 +1,6 @@
-- Getting Started
+- Getting Started Essentials
 
 * [Network Access](access.md)
-* [Account Activation](activate.md)
 * [Cluster Overview](about.md)
 
 - Rosie Web Portal
@@ -14,10 +13,10 @@
 
 - Command Line Interface
 
-* [SLURM Workload Manager](cli/SLURM.md)
-* [Rosie basics with srun](cli/srun.md)
-* [Scripting jobs with sbatch](cli/sbatch.md)
-* [Singularity Containers](cli/Singularity.md)
+* [SLURM Workload Manager Intro](cli/SLURM.md)
+* [SRUN - executing simple tasks](cli/srun.md)
+* [SBATCH - scripting complicated compute tasks](cli/sbatch.md)
+* [Containerization with Singularity](cli/Singularity.md)
 
 - Tips
 

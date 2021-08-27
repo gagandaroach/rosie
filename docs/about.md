@@ -1,4 +1,4 @@
-## Cluster Overview
+## Rosie Overview
 
 ![Cluster Overview](_images/cluster_overview.png)
 
@@ -17,9 +17,9 @@ ROSIE has 3 different types of computational processing nodes. There is a total 
 | Name | Node Count | Processor | CPU Count | RAM | GPU | IP Address |
 |----------|---------|-------|--------|-----|----|----|
 | Management | 4 | Intel Xeon Gold 6240 @ 2.601GHz | 72 | 187G | No GPU | 10.199.0.20[1-4] |
-| T4 | 20 | Intel Xeon Gold 6240 @ 2.60GHz | 72 | 376G | 4x Tesla T4 | 10.199.0.[1-20] |
+| Compute Node | 18 | Intel Xeon Gold 6240 @ 2.60GHz | 72 | 376G | 4x Tesla T4 | 10.199.0.[1-18] |
+| HighMem Compute Node | 2 | Intel Xeon Gold 6240 @ 2.60GHz | 72 | 752G | 4x Tesla T4 | 10.199.0.[19-20] |
 | DGX-1 | 3 | Intel Xeon CPU E5-2698 v4 @ 2.20GHz | 80 | 503G | 8x Tesla V100-SXM2 | 10.199.0.10[1-3] |
-
 
 ## Storage Pools
 
@@ -36,11 +36,15 @@ This means that from any machine on the cluster, you can access your home folder
 
 **OpenOnDemand**
 
-More details in [Web Portal](web/dashboard.md)
+A web browser access friendly portal for complete and versatile Rosie usage.
+
+[Web Portal Guide Page](web/dashboard.md)
 
 **SLURM**
 
-More details in [Command Line Interface](cli/SLURM.md)
+A job scheduling system built to handle robust uses of compute clusters.
+
+More details in [Command Line Interface Guide Pages](cli/SLURM.md)
 
 * SLURM Documentation [link](https://slurm.schedmd.com/documentation.html)
 * Singularity Documentation [link](https://sylabs.io/guides/3.3/user-guide/index.html)
