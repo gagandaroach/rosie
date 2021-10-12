@@ -1,5 +1,6 @@
 - Getting Started Essentials
 
+* [Requesting Access](requestaccess.md)
 * [Network Access](access.md)
 * [Cluster Overview](about.md)
 
