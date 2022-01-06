@@ -28,6 +28,10 @@ Slurm has a number of commands that control task execution on Rosie's compute re
   + What is running on the cluster right now?
 * `srun <command>`, `srun python file.py`
   + Schedule a job or task to run on ROSIE.
+  + If you want a GPU, include the `--gpus=1` option: `srun --gpus=1 bash`.
+  + You can also use srun to ssh into a worker node: `srun --pty --partition=teaching bash` will open a bash terminal on a newly allocated node.  This will give you a prompt similar to `foggp@dh-node20:~$`.  Once you are logged in, you can open a second shell to that node by using `ssh dh-node20`, being sure to use the same number as the node you were allocated.
+  + If you want a GPU, be sure to use `srun --pty --gpus=1 --partition=teaching bash` instead.
+  + **Do not use --pty with the dgx nodes. Run batch jobs on these nodes instead.**
 * `sbatch slurm_batch_script.sh`
   + Submit a batch script of organized commands.
 * `scancel <jobid>`
