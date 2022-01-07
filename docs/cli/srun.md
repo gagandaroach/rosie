@@ -21,6 +21,9 @@ $ srun --gres=gpu:v100:8 nvidia-smi
 
 # Ask slurm to email me alerts for this task.
 $ srun --mail-user=student@msoe.edu --mail-type=BEGIN,END,FAIL hostname
+
+# Ask slurm for an interactive session on a teaching node.  (**Interactive sessions should only be used on the teaching nodes**)
+$ srun --pty --partition=teaching bash
 ```
 
 The `hostname` command prints the current node's hostname. The compute nodes in the teaching partition are selected by default.
@@ -34,6 +37,9 @@ You can issue any command to srun, e.g. `python train.py`, `./program.out`, `she
 ```bash
 # One T4 GPU
 $ srun --gres=gpu:t4:1 --partition=teaching nvidia-smi
+
+# One T4 GPU in an interactive session (**Interactice sessions should only be used on the teaching nodes**)
+$ srun --gres=gpu:t4:1 --partition=teaching --pty bash
 
 # Two T4 gpus, partition is optional
 $ srun --gres=gpu:t4:2 nvidia-smi
