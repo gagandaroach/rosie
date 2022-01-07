@@ -38,7 +38,7 @@ You can issue any command to srun, e.g. `python train.py`, `./program.out`, `she
 # One T4 GPU
 $ srun --gres=gpu:t4:1 --partition=teaching nvidia-smi
 
-# One T4 GPU in an interactive session (**Interactice sessions should only be used on the teaching nodes**)
+# One T4 GPU in an interactive session (**Interactive sessions should only be used on the teaching nodes**)
 $ srun --gres=gpu:t4:1 --partition=teaching --pty bash
 
 # Two T4 gpus, partition is optional
