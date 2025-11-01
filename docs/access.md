@@ -10,9 +10,8 @@ On **Linux**, a popular option is to use [openconnect](https://www.infradead.org
 
 ## Your Rosie Cluster Account
 
-EECS and ROSIE use a separate account management system than the campus network. To request an account, contact the EECS department or the ROSIE SysAdmin.
-
-You will be given a username and a one time password (OTP). **Note: You must log in via shell to reset the OTP before you can use the web portal.**
+With a recent Chance EECS and ROSIE use the same account management system than the campus network.
+Because of this your ROSIE password should be the same as your MSOE password.
 
 ## Shell Access
 
@@ -22,13 +21,13 @@ Connect with **ssh** to management node 2, 3, or 4.
 
 ```bash
 # connect to mgmt2
-$ ssh username@dh-mgmt2.hpc.msoe.edu
+$ ssh username@ad.msoe.edu@dh-mgmt2.hpc.msoe.edu
 
 # connect to mgmt3
-$ ssh username@dh-mgmt3.hpc.msoe.edu
+$ ssh username@ad.msoe.edu@dh-mgmt3.hpc.msoe.edu
 
 # connect to mgmt4
-$ ssh username@dh-mgmt4.hpc.msoe.edu
+$ ssh username@ad.msoe.edu@dh-mgmt4.hpc.msoe.edu
 ```
 
 ### SSH Terminal Program
@@ -83,7 +82,7 @@ variety of ways. More information in the [Web Portal](web/dashboard.md) section 
 Launch your terminal program and input the command (replacing username with your own):
 
 ```shell
-$ ssh username@dh-mgmt2.hpc.msoe.edu
+$ ssh username@ad.msoe.edu@dh-mgmt2.hpc.msoe.edu
 ```
 
 2. The system will prompt for your one time password. Input this to proceed.

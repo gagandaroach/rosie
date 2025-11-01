@@ -16,6 +16,7 @@ Slurm is the workload manager on about 60% of the TOP500 supercomputers.
 | batch | 2 days | 20  | dh-node[1-20] | `gpu:t4:4` | 
 | highmem | 7 days |  2 |  dh-node[19-20] | `gpu:t4:4` |
 | dgx | 21 days |  3  | dh-dgx1-[1-3] | `gpu:v100:8` | 
+| dgxh100 | 21 days | 2 |  dh-dgxh100-[1-2] | `gpu:h100:8` | 
 | desktop | 7 days |  20 |  dh-node[1-20] | `gpu:t4:1` |
 
 ## SLURM Commands
