@@ -10,7 +10,7 @@ No source code needs to be on your local machine to gain these benefits since th
 
 Follow the official install documentation here: https://code.visualstudio.com/docs/remote/ssh.
 
-To configure the Vscode remote ssh host, input your username and the second mgmt node as the hostname. e.g. `<username>@dh-mgmt2.hpc.msoe.edu`.
+To configure the Vscode remote ssh host, input your username and the second mgmt node as the hostname. e.g. `<username>@ad.msoe.edu@dh-mgmt4.hpc.msoe.edu`
 
 ![Vscode SSH Config](../_images/vscode_ssh_connect.png)
 
